@@ -1,0 +1,235 @@
+package com.example;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class APIIndexCalculatorUI {
+
+    private JFrame frame;
+    private JTextField groupSizeField, goalClarityField, studentDemonstrationField;
+    private JTextField relevanceField, detailLevelField, internalizationField;
+    private JTextField relationToMaterialField, useOfRepresentationsField, justificationField;
+    private JTextField surveysField, photoAnalysisField, performanceAssessmentsField;
+    private JLabel resultLabel;
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            try {
+                APIIndexCalculatorUI window = new APIIndexCalculatorUI();
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public APIIndexCalculatorUI() {
+        initialize();
+    }
+
+    private void initialize() {
+        frame = new JFrame();
+        frame.setBounds(100, 100, 400, 400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
+
+        JLabel lblEnvironment = new JLabel("Environment Scores");
+        lblEnvironment.setBounds(10, 10, 150, 25);
+        frame.getContentPane().add(lblEnvironment);
+
+        JLabel lblGroupSize = new JLabel("Group Size:");
+        lblGroupSize.setBounds(10, 40, 100, 25);
+        frame.getContentPane().add(lblGroupSize);
+
+        groupSizeField = new JTextField();
+        groupSizeField.setBounds(150, 40, 50, 25);
+        frame.getContentPane().add(groupSizeField);
+
+        JLabel lblGoalClarity = new JLabel("Goal Clarity:");
+        lblGoalClarity.setBounds(10, 70, 100, 25);
+        frame.getContentPane().add(lblGoalClarity);
+
+        goalClarityField = new JTextField();
+        goalClarityField.setBounds(150, 70, 50, 25);
+        frame.getContentPane().add(goalClarityField);
+
+        JLabel lblStudentDemonstration = new JLabel("Student Demonstration:");
+        lblStudentDemonstration.setBounds(10, 100, 150, 25);
+        frame.getContentPane().add(lblStudentDemonstration);
+
+        studentDemonstrationField = new JTextField();
+        studentDemonstrationField.setBounds(150, 100, 50, 25);
+        frame.getContentPane().add(studentDemonstrationField);
+
+        JLabel lblElaboration = new JLabel("Elaboration Scores");
+        lblElaboration.setBounds(10, 130, 150, 25);
+        frame.getContentPane().add(lblElaboration);
+
+        JLabel lblRelevance = new JLabel("Relevance:");
+        lblRelevance.setBounds(10, 160, 100, 25);
+        frame.getContentPane().add(lblRelevance);
+
+        relevanceField = new JTextField();
+        relevanceField.setBounds(150, 160, 50, 25);
+        frame.getContentPane().add(relevanceField);
+
+        JLabel lblDetailLevel = new JLabel("Detail Level:");
+        lblDetailLevel.setBounds(10, 190, 100, 25);
+        frame.getContentPane().add(lblDetailLevel);
+
+        detailLevelField = new JTextField();
+        detailLevelField.setBounds(150, 190, 50, 25);
+        frame.getContentPane().add(detailLevelField);
+
+        JLabel lblInternalization = new JLabel("Internalization:");
+        lblInternalization.setBounds(10, 220, 100, 25);
+        frame.getContentPane().add(lblInternalization);
+
+        internalizationField = new JTextField();
+        internalizationField.setBounds(150, 220, 50, 25);
+        frame.getContentPane().add(internalizationField);
+
+        JLabel lblQuestions = new JLabel("Questions Scores");
+        lblQuestions.setBounds(10, 250, 150, 25);
+        frame.getContentPane().add(lblQuestions);
+
+        JLabel lblRelationToMaterial = new JLabel("Relation to Material:");
+        lblRelationToMaterial.setBounds(10, 280, 150, 25);
+        frame.getContentPane().add(lblRelationToMaterial);
+
+        relationToMaterialField = new JTextField();
+        relationToMaterialField.setBounds(150, 280, 50, 25);
+        frame.getContentPane().add(relationToMaterialField);
+
+        JLabel lblUseOfRepresentations = new JLabel("Use of Representations:");
+        lblUseOfRepresentations.setBounds(10, 310, 150, 25);
+        frame.getContentPane().add(lblUseOfRepresentations);
+
+        useOfRepresentationsField = new JTextField();
+        useOfRepresentationsField.setBounds(150, 310, 50, 25);
+        frame.getContentPane().add(useOfRepresentationsField);
+
+        JLabel lblJustification = new JLabel("Justification:");
+        lblJustification.setBounds(10, 340, 100, 25);
+        frame.getContentPane().add(lblJustification);
+
+        justificationField = new JTextField();
+        justificationField.setBounds(150, 340, 50, 25);
+        frame.getContentPane().add(justificationField);
+
+        JLabel lblObservations = new JLabel("Observations Scores");
+        lblObservations.setBounds(220, 10, 150, 25);
+        frame.getContentPane().add(lblObservations);
+
+        JLabel lblSurveys = new JLabel("Surveys:");
+        lblSurveys.setBounds(220, 40, 100, 25);
+        frame.getContentPane().add(lblSurveys);
+
+        surveysField = new JTextField();
+        surveysField.setBounds(360, 40, 50, 25);
+        frame.getContentPane().add(surveysField);
+
+        JLabel lblPhotoAnalysis = new JLabel("Photo Analysis:");
+        lblPhotoAnalysis.setBounds(220, 70, 100, 25);
+        frame.getContentPane().add(lblPhotoAnalysis);
+
+        photoAnalysisField = new JTextField();
+        photoAnalysisField.setBounds(360, 70, 50, 25);
+        frame.getContentPane().add(photoAnalysisField);
+
+        JLabel lblPerformanceAssessments = new JLabel("Performance Assessments:");
+        lblPerformanceAssessments.setBounds(220, 100, 150, 25);
+        frame.getContentPane().add(lblPerformanceAssessments);
+
+        performanceAssessmentsField = new JTextField();
+        performanceAssessmentsField.setBounds(360, 100, 50, 25);
+        frame.getContentPane().add(performanceAssessmentsField);
+
+        JButton calculateButton = new JButton("Calculate API-Index");
+        calculateButton.setBounds(220, 160, 150, 25);
+        frame.getContentPane().add(calculateButton);
+
+        resultLabel = new JLabel("API-Index: ");
+        resultLabel.setBounds(220, 200, 200, 25);
+        frame.getContentPane().add(resultLabel);
+
+        calculateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculateApiIndex();
+            }
+        });
+    }
+
+    private void calculateApiIndex() {
+        try {
+            int groupSize = Integer.parseInt(groupSizeField.getText());
+            int goalClarity = Integer.parseInt(goalClarityField.getText());
+            int studentDemonstration = Integer.parseInt(studentDemonstrationField.getText());
+
+            int relevance = Integer.parseInt(relevanceField.getText());
+            int detailLevel = Integer.parseInt(detailLevelField.getText());
+            int internalization = Integer.parseInt(internalizationField.getText());
+
+            int relationToMaterial = Integer.parseInt(relationToMaterialField.getText());
+            int useOfRepresentations = Integer.parseInt(useOfRepresentationsField.getText());
+            int justification = Integer.parseInt(justificationField.getText());
+
+            int surveys = Integer.parseInt(surveysField.getText());
+            int photoAnalysis = Integer.parseInt(photoAnalysisField.getText());
+            int performanceAssessments = Integer.parseInt(performanceAssessmentsField.getText());
+
+            APIIndexCalculator calculator = new APIIndexCalculator();
+
+            double environmentScore = calculator.scoreEnvironment(groupSize, goalClarity, studentDemonstration);
+            double elaborationScore = calculator.scoreElaboration(relevance, detailLevel, internalization);
+            double questionsScore = calculator.scoreQuestions(relationToMaterial, useOfRepresentations, justification);
+            double observationsScore = calculator.scoreObservations(surveys, photoAnalysis, performanceAssessments);
+
+            double apiIndex = calculator.calculateApiIndex(environmentScore, elaborationScore, questionsScore, observationsScore);
+            resultLabel.setText("API-Index: " + apiIndex);
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(frame, "Please enter valid integers for all fields.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+
+class APIIndexCalculator {
+    private static final double ENVIRONMENT_WEIGHT = 0.25;
+    private static final double ELABORATION_WEIGHT = 0.25;
+    private static final double QUESTIONS_WEIGHT = 0.25;
+    private static final double OBSERVATIONS_WEIGHT = 0.25;
+
+    public double scoreEnvironment(int groupSize, int goalClarity, int studentDemonstration) {
+        return (groupSize + goalClarity + studentDemonstration) / 3.0;
+    }
+
+    public double scoreElaboration(int relevance, int detailLevel, int internalization) {
+        return (relevance + detailLevel + internalization) / 3.0;
+    }
+
+    public double scoreQuestions(int relationToMaterial, int useOfRepresentations, int justification) {
+        return (relationToMaterial + useOfRepresentations + justification) / 3.0;
+    }
+
+    public double scoreObservations(int surveys, int photoAnalysis, int performanceAssessments) {
+        return (surveys + photoAnalysis + performanceAssessments) / 3.0;
+    }
+
+    public double calculateApiIndex(double environment, double elaboration, double questions, double observations) {
+        double normalizedEnvironment = environment / 5.0;
+        double normalizedElaboration = elaboration / 5.0;
+        double normalizedQuestions = questions / 5.0;
+        double normalizedObservations = observations / 5.0;
+
+        double apiIndex = (ENVIRONMENT_WEIGHT * normalizedEnvironment) +
+                          (ELABORATION_WEIGHT * normalizedElaboration) +
+                          (QUESTIONS_WEIGHT * normalizedQuestions) +
+                          (OBSERVATIONS_WEIGHT * normalizedObservations);
+        
+        return apiIndex * 5.0;  // Scale back to 1-5
+    }
+}
+
